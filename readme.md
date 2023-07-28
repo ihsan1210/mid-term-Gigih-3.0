@@ -155,6 +155,7 @@ POST / Creates a new Comment and insert to databases.
   username :  string
   comment :  string
 }
+```
 
 ## How To Run In Local
 
@@ -163,18 +164,20 @@ POST / Creates a new Comment and insert to databases.
 This project use express Js version 18.16
 
 Make sure to install the dependencies:
-  "dependencies": {
-    "body-parser": "^1.20.2",
-    "dotenv": "^16.3.1",
-    "express": "^4.18.2",
-    "mongoose": "^7.4.1",
-    "nodemon": "^3.0.1"
-  }
+"dependencies": {
+"body-parser": "^1.20.2",
+"dotenv": "^16.3.1",
+"express": "^4.18.2",
+"mongoose": "^7.4.1",
+"nodemon": "^3.0.1"
+}
+
 ```
 
 # install dependencies
 
 ```
+
 npm install express body-parser dotenv mongoose nodemon
 
 ```
@@ -182,9 +185,12 @@ npm install express body-parser dotenv mongoose nodemon
 ### Start Server
 
 ```
+
 # Run Server
 
 npm start index.js
+
 ```
 
 Running on http://localhost:3000
+```
