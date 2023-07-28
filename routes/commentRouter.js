@@ -21,10 +21,7 @@ router.post('/post', (req,res)=>{
     const saveComment = comment.save();
     res.status(200).json({
       message:'comment added',
-      data : {
-        username: saveComment.username,
-        comment : saveComment.comment
-      }
+      data : saveComment
     })
   }catch(error){
     res.status(500).json({message:error.message})

@@ -1,4 +1,4 @@
-## Mid Term Project GIGIH Fullstack Engineer
+## Mid Term GIGIH 3.0 (BACKEND)
 
 ## Table Of Content
 
@@ -6,33 +6,31 @@
   - [Videos Collection](#videos-collection)
   - [Comment Collection](#comment-collection)
 - [API Structure](#api-structure)
-- [API Request Response](#api-request-response)
+- [lIST API Request Response](#api-request-response)
 - [How To Run](#how-to-run-in-local)
 
 ## Database Structure
 
-This project have 2 collection, videos and comment.
+Database name is tokplay and have 2 collections, videos and comments.
 
 ### Videos Collection
 
 ```
   {
-    video_id: string
-    thumbnail: string
-    shop_name: string
-    video_title: string
+    videoId: string
+    urlThumbnail: string
     product : [
       {
-        nama_produk:  string
-        harga_produk:  number
-        thumbnail_produk:  string
-        link_produk:  string
+        productId:  string
+        price:  number
+        productName:  string
+        linkProduct:  string
       }
     ]
   }
 ```
 
-### Comment Collection
+### Comments Collection
 
 ```
 {
@@ -47,68 +45,33 @@ This project have 2 collection, videos and comment.
 Endpoint ready to use
 
 ```
-GET   /
-GET   /tokplay
-GET   /tokplay/product
-GET   /tokplay/comment
-GET   /tokplay/{id}
-POST  /tokplay/comment/post
+GET   /video
+GET   /video/listProduk
+GET   /video/:id
+GET   /comment/list
+POST  /comment/post
 ```
 
 ## API Request Response
 
-### GET /
+### GET /video
 
 ---
 
-Return json `message `
-
-- **URL Params**  
-  None
-- **Data Params**  
-  None
-- **Headers**  
-  Content-Type: application/json
-- **Success Response:**
-- **Code:** 200  
-  **Content:**
-
-```
-{
-  message: 'API is running, you can use this API with /tokplay',
-}
-```
-
-### GET /tokplay
-
----
-
-Return all videos from databases.
-
-- **URL Params**  
-  None
-- **Data Params**  
-  None
-- **Headers**  
-  Content-Type: application/json
-- **Success Response:**
-- **Code:** 200  
-  **Content:**
+Return all videos JSON from database
 
 ```
 {
   result : [
     {
-      video_id,
-      thumbnail,
-      shop_name,
-      video_title,
+      videoId,
+      urlThumbnail,
       product : [
         {
-          nama_produk,
-          harga_produk,
-          thumbnail_produk,
-          link_produk
+          productId,
+          productName,
+          linkProduct,
+          price
         }
       ]
     }
@@ -116,89 +79,57 @@ Return all videos from databases.
 }
 ```
 
-### GET /tokplay/:id
+### GET /video/listProduk
 
 ---
 
-Return videos associated with the specified id.
-
-- **URL Params**  
-  None
-- **Data Params**  
-  None
-- **Headers**  
-  Content-Type: application/json
-- **Success Response:**
-- **Code:** 200  
-  **Content:**
-
-```
-{
-  result : [
-    {
-      video_id,
-      thumbnail,
-      shop_name,
-      video_title,
-      product : [
-        {
-     	  nama_produk,
-          harga_produk,
-          thumbnail_produk,
-          link_produk
-        }
-      ]
-    }
-  ]
-}
-```
-
-### GET /tokplay/product
-
----
-
-Return all product from databases.
-
-- **URL Params**  
-  None
-- **Data Params**  
-  None
-- **Headers**  
-  Content-Type: application/json
-- **Success Response:**
-- **Code:** 200  
-  **Content:**
+Return List Product in Video Database
 
 ```
 {
   result : [
     [
       {
-          nama_produk,
-          harga_produk,
-          thumbnail_produk,
-          link_produk
+      productId:,
+      productName,
+      linkProduct,
+      price
       }
     ]
   ]
 }
 ```
 
-### GET /tokplay/comment
+### GET /video/:id
 
 ---
 
-Return all comment from databases.
+Find videos from the specified id.
 
-- **URL Params**  
-  None
-- **Data Params**  
-  None
-- **Headers**  
-  Content-Type: application/json
-- **Success Response:**
-- **Code:** 200  
-  **Content:**
+```
+{
+  result : [
+    {
+      videoId,
+      urlThumbnail,
+      product : [
+        {
+          productId,
+     	    productName,
+          price,
+          linkProduct
+        }
+      ]
+    }
+  ]
+}
+```
+
+### GET /comment/list
+
+---
+
+Get all comment from databases.
 
 ```
 {
@@ -212,69 +143,49 @@ Return all comment from databases.
 }
 ```
 
-### POST /tokplay/comment/post
+### POST /comment/post
 
 ---
 
-Creates a new Comment and returns the new object.
-
-- **URL Params**  
-  None
-- **Data Params**
-  ```
-  {
-    videoId :  string
-    username :  string
-    comment :  string
-  }
-  ```
-- **Headers**  
-  Content-Type: application/json
-- **Success Response:**
-- **Code:** 200  
-  **Content:**
+POST / Creates a new Comment and insert to databases.
 
 ```
 {
-  message: "Comment added successfully",
-  data : {
-    username,
-    comment
-  }
+  videoId :  string
+  username :  string
+  comment :  string
 }
-```
 
 ## How To Run In Local
 
 ### Installation
 
-This project use Node version 18.16
+This project use express Js version 18.16
 
 Make sure to install the dependencies:
-
-```
-# yarn
-yarn install
-
-# npm
-npm install
-
-# pnpm
-pnpm install
-
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "mongoose": "^7.4.1",
+    "nodemon": "^3.0.1"
+  }
 ```
 
-### Development Server
+# install dependencies
 
-Start the development server on http://localhost:3000
+npm install express body-parser dotenv mongoose nodemon
 
 ```
-# yarn
-yarn start
 
-# npm
-npm start
+### Start Server
+```
 
-# pnpm
-pnpm start
+# Run Server
+
+npm start index.js
+
+```
+
+Running on http://localhost:3000
 ```
