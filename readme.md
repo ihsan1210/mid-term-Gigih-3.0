@@ -174,18 +174,17 @@ Make sure to install the dependencies:
 
 # install dependencies
 
+```
 npm install express body-parser dotenv mongoose nodemon
 
 ```
 
 ### Start Server
-```
 
+```
 # Run Server
 
 npm start index.js
-
 ```
 
 Running on http://localhost:3000
-```
