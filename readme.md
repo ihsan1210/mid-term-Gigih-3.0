@@ -161,9 +161,11 @@ POST / Creates a new Comment and insert to databases.
 
 ### Installation
 
-This project use express Js version 18.16
+This project use express Js version 4.18.2
 
-Make sure to install the dependencies:
+```
+#Make sure to install the dependencies:
+
 "dependencies": {
 "body-parser": "^1.20.2",
 "dotenv": "^16.3.1",
@@ -171,26 +173,19 @@ Make sure to install the dependencies:
 "mongoose": "^7.4.1",
 "nodemon": "^3.0.1"
 }
-
 ```
 
 # install dependencies
 
 ```
-
 npm install express body-parser dotenv mongoose nodemon
-
 ```
 
 ### Start Server
 
 ```
-
 # Run Server
-
 npm start index.js
-
 ```
 
 Running on http://localhost:3000
-```
