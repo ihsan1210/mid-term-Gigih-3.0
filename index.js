@@ -5,6 +5,9 @@ const app = express()
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const mongoString = process.env.DATABASE_URL;
+import cors from 'cors';
+
+app.use(cors());
 
 const port = process.env.PORT || 8080;
 
