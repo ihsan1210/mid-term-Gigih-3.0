@@ -5,7 +5,8 @@ const app = express()
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const mongoString = process.env.DATABASE_URL;
-import cors from 'cors';
+
+import cors from 'cors'
 
 app.use(cors());
 
