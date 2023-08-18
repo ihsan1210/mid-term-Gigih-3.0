@@ -6,6 +6,8 @@ const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const mongoString = process.env.DATABASE_URL;
 
+const port = precess.env.PORT || 3000;
+
 mongoose.connect(mongoString);
 const database = mongoose.connection;
 
@@ -32,7 +34,7 @@ app.get("/",(req,res)=>{
   res.send('hi');
 })
 
-app.listen(3000,()=>{
+app.listen(port,"0.0.0.0",()=>{
   console.log (`server started at port ${3000}`);
 })
 
