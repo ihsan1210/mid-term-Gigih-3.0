@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const Video = require('../models/videoModel');
 
+// Get all video list
 router.get('/',async (req,res)=>{
   try{
     const video = await Video.find();
@@ -11,18 +12,7 @@ router.get('/',async (req,res)=>{
   }
 })
 
-router.get("/listProduk", async(req,res)=>{
-  try{
-    const video = await Video.find();
-    const product = video.map((video) => {
-      return video.product
-    });
-    res.status(200).json(product);
-  } catch(error){
-    res.status(500).json({ message: error.message });
-  }
-})
-
+// Get video by id
 router.get('/:id', async(req,res) =>{
   try{
     const video = await Video.aggregate([
@@ -41,6 +31,20 @@ router.get('/:id', async(req,res) =>{
     res.status(500).json({ message: error.message });
   }
 });
+
+
+router.get("/listProduk/:id", async(req,res)=>{
+  try{
+    const video = await Video.find({videoId:req.params.id});
+    const product = video.map((video) => {
+      return video.product
+    });
+    res.status(200).json(product);
+  } catch(error){
+    res.status(500).json({ message: error.message });
+  }
+})
+
 
 module.exports = router;
 

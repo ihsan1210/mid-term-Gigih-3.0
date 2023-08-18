@@ -9,11 +9,19 @@ const videoSchema = new mongoose.Schema({
       type:String,
       required:true
     },
+    urlVideo : {
+      type:String,
+      required:true
+    },
     product :[{
       productId :{
       type:String,
       required:true
       },
+      productThumbnail :{
+        type:String,
+        required:true
+        },
       productName :{
         type:String,
         required:true

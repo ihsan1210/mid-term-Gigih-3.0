@@ -2,18 +2,18 @@ const express = require('express');
 const router = express.Router();
 const CommentModel = require('../models/commentModel');
 
-router.get('/list', async (req,res)=>{
+router.get('/list/:id', async (req,res)=>{
   try{
-    const comment = await CommentModel.find();
+    const comment = await CommentModel.find({videoId:req.params.id});
     res.status(200).json(comment);
   } catch(error){
     res.status(500).json({ message: error.message });
   }
 })
 
-router.post('/post', (req,res)=>{
+router.post('/post/:videoId', (req,res)=>{
   const comment = new CommentModel({
-    videoId: req.body.videoId,
+    videoId: req.params.videoId,
     username: req.body.username,
     comment: req.body.comment,
   });
